@@ -4,10 +4,10 @@ import random
 from django.shortcuts import render
 from django.views.generic.base import View
 
-from .forms import InputForm
+from .forms import InputForm, AdviceForm
 
 
-class SubmitForm(View):
+class SubmitFormView(View):
     def post(self, request, *args, **kwargs):
         input_form = InputForm(request.POST)
         if input_form.is_valid():
@@ -53,3 +53,15 @@ class SubmitForm(View):
             })
 
         return render(request, "error.html")
+
+class AdviceView(View):
+    def get(self, request):
+        return render(request, "advice.html")
+
+    def post(self, request, *args, **kwargs):
+        advice_form = AdviceForm(request.POST)
+        if advice_form.is_valid():
+            advice_form.save(commit=True)
+            return render(request, "redirect.html")
+        else:
+            return render(request, "error.html")
