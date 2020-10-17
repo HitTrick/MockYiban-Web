@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上报位置</title>
+	<style type="text/css">
+
+		html {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			padding: 0px;
+			margin: 0px;
+		}
+
+		.body-container {
+			padding: 0px;
+			margin: 0px;
+			background-color: #f5f5f5;
+			font-family: Microsoft JhengHei;
+		}
+
+		.card-container{
+			padding: 10px;
+			line-height: 28px;
+			background-color: #fff;
+			margin-top: 3px;
+			margin-bottom: 3px;
+		}
+
+		.navbar-container {
+			margin: 0px;
+			padding: 12px;
+			color: white;
+			background-color: #347dbc;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.bold-text {
+			font-weight: bold;
+		}
+
+		.light-grey-text {
+			color: #999;
+		}
+
+		.dark-grey-text {
+			color: #666;
+		}
+
+		#notice-btn {
+			width: 66%;
+			margin-top: 3px;
+			margin-bottom: 3px;
+			padding: 10px 0px;
+			color: white;
+			text-align: center;
+			border-radius: 30px;
+			background-color: #347fc5;
+		}
+
+		.split-line-under {
+			border-bottom: 1px solid #f5f5f5;
+		}
+
+		.btn-container {
+			margin: 14px;
+			height: 50px;
+			display: flex;
+			justify-content: center;
+		}
+
+		.some-padding {
+			padding: 10px;
+		}
+
+        #logout-container {
+			width: 110px;
+			height: 32px;
+			padding: 2px;
+			display: flex;
+			margin-right: -12px;
+			background-image: linear-gradient(#f07283, #eb9881);
+			border-top-left-radius: 30px;
+			border-bottom-left-radius: 30px;
+			justify-content: center;
+		}
+
+		#logout-icon {
+			padding-top: 8px;
+			padding-left: 6px;
+			height: 20px;
+			width: 20px;
+		}
+		#logout-text {
+			padding-top: 5px;
+			padding-left: 6px;
+		}
+
+        #logout-text a {
+            text-decoration: none;
+            color: white;
+        }
+
+	</style>
+</head>
+<body>
+	<div class="body-container">
+		<div class="navbar-container">
+			<div>
+				<div id="stu_name">{{ records_form.0.stu_name }}</div>
+				<div id="stu_id">{{ records_form.0.stu_id }}</div>
+			</div>
+			<div id="logout-container">
+                <img id="logout-icon" src="/static/logout.png">
+				<div id="logout-text"><a href="/">退出登录</a></div>
+			</div>
+		</div>
+
+		<div class="card-container">
+			<div>位置信息</div>
+			<div class="light-grey-text">楼宇：学校{{ records_form.0.gate }}{{ records_form.0.in_out }}（限制2次）</div>
+			<div class="light-grey-text">日期：{{ records_form.0.record_time }}</div>
+			<br/>
+		</div>
+
+		<div class="btn-container">
+			<div id="notice-btn">上报位置成功</div>
+		</div>
+
+		<div class="card-container">
+			<div class="split-line-under some-padding">今日上报</div>
+			<br/>
+			<div id="report-history">
+                {% for record in records_form %}
+				<div>上报时间：{{ record.record_time }}</div>
+				<div class="dark-grey-text">学校{{ record.gate }}{{ record.in_out }}（限制2次）| 进入</div>
+
+				<br/>
+				<br/>
+                {% endfor %}
+
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

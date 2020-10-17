@@ -1,0 +1,20 @@
+.idea
+MockYiban/settings.py
+conf/uwsgi/mock-yiban.ini
+conf/nginx/mock-yiban.conf
+# Byte-compiled / optimized / DLL files
+__pycache__/
+# Install logs
+pip-log.txt
+# Django stuff:
+*.log
+# virtualenv
+venv/
+.vscode
+.DS_Store
+*.sqlite3
+# Ignore Django Migrations in Development if you are working on team
+# Only for Development only
+# **/migrations/**
+# !**/migrations
+# !**/migrations/__init__.py
