@@ -1,14 +1,28 @@
-<!doctype html>
-<html lang="zh-hans">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Error</title>
-</head>
-<body>
-小伙子，活着不好吗？
-<a href="/">回去正常输入</a>
-</body>
-</html>
+{% include "header.html" %}
+
+<div class="card">
+    <div class="card-header">输入不正确</div>
+    <div class="card-body">
+        小伙子，活着不好吗？
+        <span id="time">5</span>秒后跳转到主页...
+    </div>
+</div>
+<script>
+
+        var second = 5;
+        //2.1定义一个方法，获取span标签，修改span标签体内容，时间...
+        var time = document.getElementById("time");
+        function showTime() {
+            second --;
+            //判断时间如果<=0，则跳转到指定页面
+            if (second <= 0) {
+                //跳转到指定页面
+                location.href = "/";
+            }
+            time.innerHTML = second + "";
+        }
+
+        setInterval(showTime,1000);
+</script>
+
+{% include "footer.html" %}

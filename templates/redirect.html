@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-hans">
-<head>
-    <meta charset="UTF-8">
-    <title>跳转回主页</title>
-</head>
-<body>
-提交完成，<span id="time">5</span>秒后跳转到主页...
+{% include "header.html" %}
+<div class="card">
+    <div class="card-header">成功提交</div>
+    <div class="card-body">
+        提交完成，<span id="time">5</span>秒后跳转到主页...
+    </div>
+</div>
 <script>
 
         var second = 5;
@@ -23,5 +22,4 @@
 
         setInterval(showTime,1000);
 </script>
-</body>
-</html>
+{% include "footer.html" %}

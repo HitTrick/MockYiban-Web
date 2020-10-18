@@ -8,6 +8,9 @@ from .forms import InputForm, AdviceForm
 
 
 class SubmitFormView(View):
+    def get(self, request):
+        return render(request, "error.html")
+
     def post(self, request, *args, **kwargs):
         input_form = InputForm(request.POST)
         if input_form.is_valid():
@@ -43,7 +46,7 @@ class SubmitFormView(View):
                     random_record["gate"] = "西门"
 
                 random_time = datetime(now_time.year, now_time.month, now_time.day, random.randint(7, 11),
-                                                random.randint(0, 59), random.randint(0, 59))
+                                       random.randint(0, 59), random.randint(0, 59))
                 random_record["record_time"] = random_time.strftime("%Y-%m-%d %H:%M:%S")
 
                 records.append(random_record)
@@ -53,6 +56,7 @@ class SubmitFormView(View):
             })
 
         return render(request, "error.html")
+
 
 class AdviceView(View):
     def get(self, request):
